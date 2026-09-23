@@ -22,12 +22,46 @@
         <link href="lib/animate/animate.min.css" rel="stylesheet">
         <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
-
         <!-- Customized Bootstrap Stylesheet -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
 
         <!-- Template Stylesheet -->
         <link href="css/style.css" rel="stylesheet">
+        <script>
+    function kirimKeWhatsApp() {
+        // Mengambil data dari form
+        const carType = document.getElementById('carType').options[document.getElementById('carType').selectedIndex].text;
+        const pickUp = document.getElementById('pickUp').value;
+        const dropOff = document.getElementById('dropOff').value;
+        const pickUpDate = document.getElementById('pickUpDate').value;
+        const pickUpTime = document.getElementById('pickUpTime').value;
+        const returnDate = document.getElementById('returnDate').value;
+        const returnTime = document.getElementById('returnTime').value;
+
+        // Validasi sederhana
+        if (carType === "Select Your Car type" || pickUp === "" || pickUpDate === "") {
+            alert("Mohon isi data dengan lengkap!");
+            return;
+        }
+
+        // Menyusun pesan
+        const pesan = `Halo Awo Trans, saya ingin booking mobil:%0A` +
+                      `---------------------------%0A` +
+                      `*Mobil:* ${carType}%0A` +
+                      `*Pick Up:* ${pickUp}%0A` +
+                      `*Drop Off:* ${dropOff}%0A` +
+                      `*Tanggal Ambil:* ${pickUpDate} (${pickUpTime})%0A` +
+                      `*Tanggal Kembali:* ${returnDate} (${returnTime})%0A` +
+                      `---------------------------%0A` +
+                      `Mohon informasikan ketersediaan unitnya. Terima kasih.`;
+
+        // Nomor WhatsApp tujuan
+        const nomorWA = "62821420224277";
+
+        // Membuka WhatsApp
+        window.open(`https://wa.me/${nomorWA}?text=${pesan}`, '_blank');
+    }
+</script>
     </head>
 
     <body>
@@ -44,18 +78,20 @@
         <div class="container-fluid topbar bg-secondary d-none d-xl-block w-100">
             <div class="container">
                 <div class="row gx-0 align-items-center" style="height: 45px;">
-                    <div class="col-lg-6 text-center text-lg-start mb-lg-0">
-                        <div class="d-flex flex-wrap">
-                            <a href="https://share.google/tRW3UdEjcTKKyK4zT" class="text-muted me-4"><i class="fas fa-map-marker-alt text-primary me-2"></i>Find a Location</a>
-                            <a href="https://wa.me/6281231778551" class="text-muted me-4"><i class="fas fa-phone-alt text-primary me-2"></i>0812 3177 8551</a>
-                            <a href="mailto:awolahanjayatrans@gmail.com" class="text-muted me-0"><i class="fas fa-envelope text-primary me-2"></i>awolahanjayatrans@gmail.com</a>
+                    <div class="col-lg-8 text-center text-lg-start mb-lg-0">
+                        <div class="d-flex flex-wrap align-items-center">
+                            <a href="https://share.google/tRW3UdEjcTKKyK4zT" class="text-muted me-3" target="_blank"><i class="fas fa-map-marker-alt text-primary me-1"></i>Find Location</a>
+                            <a href="https://wa.me/6281231778551" class="text-muted me-2" target="_blank"><i class="fab fa-whatsapp text-primary me-1"></i>0812 3177 8551</a>
+                            <a href="https://wa.me/628980839962" class="text-muted me-2" target="_blank"><i class="fab fa-whatsapp text-primary me-1"></i>0898 0839 962</a>
+                            <a href="https://wa.me/62821420224277" class="text-muted me-2" target="_blank"><i class="fab fa-whatsapp text-primary me-1"></i>0821 4202 24277</a>
+                            <a href="https://wa.me/6282113965757" class="text-muted me-2" target="_blank"><i class="fab fa-whatsapp text-primary me-1"></i>0821 1396 5757</a>
                         </div>
                     </div>
-                    <div class="col-lg-6 text-center text-lg-end">
+                    <div class="col-lg-4 text-center text-lg-end">
                         <div class="d-flex align-items-center justify-content-end">
-                            <a href="#" class="btn btn-light btn-sm-square rounded-circle me-3"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#" class="btn btn-light btn-sm-square rounded-circle me-3"><i class="fab fa-twitter"></i></a>
-                            <a href="#" class="btn btn-light btn-sm-square rounded-circle me-3"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="btn btn-light btn-sm-square rounded-circle me-2"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="btn btn-light btn-sm-square rounded-circle me-2"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="btn btn-light btn-sm-square rounded-circle me-2"><i class="fab fa-instagram"></i></a>
                             <a href="#" class="btn btn-light btn-sm-square rounded-circle me-0"><i class="fab fa-linkedin-in"></i></a>
                         </div>
                     </div>
@@ -69,7 +105,7 @@
             <div class="container">
                 <nav class="navbar navbar-expand-lg navbar-light">
                     <a href="" class="navbar-brand p-0">
-                        <h1 class="display-6 text-primary"><img src="img/logo.png" alt="Logo"><i class=""></i></i>   Awo Trans</h1>
+                        <h1 class="display-6 text-primary"><img src="img/logo.png" alt="Logo"><i class=""></i> Awo Trans</h1>
                     </a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                         <span class="fa fa-bars"></span>
@@ -93,7 +129,7 @@
                             </div>
                             <a href="contact.html" class="nav-item nav-link">Contact</a>
                         </div>
-                        <a href="#" class="btn btn-primary rounded-pill py-2 px-4">Get Started</a>
+                        <a href="https://wa.me/62821420224277" target="_blank" class="btn btn-primary rounded-pill py-2 px-4">Get Started</a>
                     </div>
                 </nav>
             </div>
@@ -116,72 +152,62 @@
                                     <div class="col-lg-6 fadeInLeft animated" data-animation="fadeInLeft" data-delay="1s" style="animation-delay: 1s;">
                                         <div class="bg-secondary rounded p-5">
                                             <h4 class="text-white mb-4">CONTINUE CAR RESERVATION</h4>
-                                            <form>
+                                            <form id="bookingForm">
                                                 <div class="row g-3">
                                                     <div class="col-12">
-                                                        <select class="form-select" aria-label="Default select example">
+                                                        <select id="carType" class="form-select">
                                                             <option selected>Select Your Car type</option>
-                                                            <option value="1">Innova Reborn 2.4 G A/T</option>
-                                                            <option value="2">All New Avanza G A/T</option>
-                                                            <option value="3">Alphard HEV</option>
-                                                            <option value="4">Hiace Premio</option>
+                                                            <option value="Alphard All New HEV">Alphard All New HEV</option>
+                                                            <option value="Alphard FC">Alphard FC</option>
+                                                            <option value="Zenix Q">Zenix Q</option>
+                                                            <option value="Zenix V">Zenix V</option>
+                                                            <option value="Zenix G">Zenix G</option>
+                                                            <option value="Innova Reborn">Innova Reborn</option>
+                                                            <option value="Avanza">Avanza</option>
+                                                            <option value="Hiace Commuter">Hiace Commuter</option>
+                                                            <option value="Hiace Premio">Hiace Premio</option>
                                                         </select>
                                                     </div>
+                                                    
                                                     <div class="col-12">
                                                         <div class="input-group">
                                                             <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
                                                                 <span class="fas fa-map-marker-alt"></span> <span class="ms-1">Pick Up</span>
                                                             </div>
-                                                            <input class="form-control" type="text" placeholder="Enter a City or Airport" aria-label="Enter a City or Airport">
+                                                            <input id="pickUp" class="form-control" type="text" placeholder="Enter a City or Airport">
                                                         </div>
                                                     </div>
                                                     <div class="col-12">
-                                                        <a href="#" class="text-start text-white d-block mb-2">Need a different drop-off location?</a>
                                                         <div class="input-group">
                                                             <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
                                                                 <span class="fas fa-map-marker-alt"></span><span class="ms-1">Drop off</span>
                                                             </div>
-                                                            <input class="form-control" type="text" placeholder="Enter a City or Airport" aria-label="Enter a City or Airport">
+                                                            <input id="dropOff" class="form-control" type="text" placeholder="Enter a City or Airport">
                                                         </div>
                                                     </div>
+
                                                     <div class="col-12">
                                                         <div class="input-group">
                                                             <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
-                                                                <span class="fas fa-calendar-alt"></span><span class="ms-1">Di ambil pukul</span>
+                                                                <span class="fas fa-calendar-alt"></span><span class="ms-1">Di ambil</span>
                                                             </div>
-                                                            <input class="form-control" type="date">
-                                                            <select class="form-select ms-3" aria-label="Default select example">
-                                                                <option selected>12:00AM</option>
-                                                                <option value="1">1:00AM</option>
-                                                                <option value="2">2:00AM</option>
-                                                                <option value="3">3:00AM</option>
-                                                                <option value="4">4:00AM</option>
-                                                                <option value="5">5:00AM</option>
-                                                                <option value="6">6:00AM</option>
-                                                                <option value="7">7:00AM</option>
-                                                            </select>
+                                                            <input id="pickUpDate" class="form-control" type="date">
+                                                            <input id="pickUpTime" class="form-control" type="time">
                                                         </div>
                                                     </div>
+
                                                     <div class="col-12">
                                                         <div class="input-group">
                                                             <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
-                                                                <span class="fas fa-calendar-alt"></span><span class="ms-1">Di kembalikan pukul</span>
+                                                                <span class="fas fa-calendar-alt"></span><span class="ms-1">Di kembalikan</span>
                                                             </div>
-                                                            <input class="form-control" type="date">
-                                                            <select class="form-select ms-3" aria-label="Default select example">
-                                                                <option selected>12:00AM</option>
-                                                                <option value="1">1:00AM</option>
-                                                                <option value="2">2:00AM</option>
-                                                                <option value="3">3:00AM</option>
-                                                                <option value="4">4:00AM</option>
-                                                                <option value="5">5:00AM</option>
-                                                                <option value="6">6:00AM</option>
-                                                                <option value="7">7:00AM</option>
-                                                            </select>
+                                                            <input id="returnDate" class="form-control" type="date">
+                                                            <input id="returnTime" class="form-control" type="time">
                                                         </div>
                                                     </div>
+
                                                     <div class="col-12">
-                                                        <button class="btn btn-light w-100 py-2">Book Now</button>
+                                                        <button type="button" onclick="kirimKeWhatsApp()" class="btn btn-primary w-100 py-2">Book Now</button>
                                                     </div>
                                                 </div>
                                             </form>
@@ -190,7 +216,6 @@
                                     <div class="col-lg-6 d-none d-lg-flex fadeInRight animated" data-animation="fadeInRight" data-delay="1s" style="animation-delay: 1s;">
                                         <div class="text-start">
                                             <h1 class="display-5 text-white">Dapatkan Pelayanan Terbaik hanya di Awo Trans</h1>
-                                            <p>Rent Car Surabaya</p>
                                         </div>
                                     </div>
                                 </div>
@@ -210,10 +235,15 @@
                                                     <div class="col-12">
                                                         <select class="form-select" aria-label="Default select example">
                                                             <option selected>Select Your Car type</option>
-                                                            <option value="1">Innova G 2.4 a/t</option>
-                                                            <option value="2">All New Avanza G CVT</option>
-                                                            <option value="3">Alphard HEV</option>
-                                                            <option value="4">Hiace Premio</option>
+                                                            <option value="1">Alphard All New HEV</option>
+                                                            <option value="2">Alphard FC</option>
+                                                            <option value="3">Zenix Q</option>
+                                                            <option value="4">Zenix V</option>
+                                                            <option value="5">Zenix G</option>
+                                                            <option value="6">Innova Reborn</option>
+                                                            <option value="7">Avanza</option>
+                                                            <option value="8">Hiace Commuter</option>
+                                                            <option value="9">Hiace Premio</option>
                                                         </select>
                                                     </div>
                                                     <div class="col-12">
@@ -270,7 +300,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-12">
-                                                        <button class="btn btn-light w-100 py-2">Book Now</button>
+                                                        <a href="https://wa.me/62821420224277" target="_blank" class="btn btn-light w-100 py-2">Book Now</a>
                                                     </div>
                                                 </div>
                                             </form>
@@ -425,7 +455,7 @@
                     <div class="col-xl-6 wow fadeInRight" data-wow-delay="0.2s">
                         <div class="about-img">
                             <div class="img-1">
-                                <img src="img/g.png" class="img-fluid rounded h-100 w-100" alt="">
+                                <img src="img/awoceo.png" class="img-fluid rounded h-100 w-100" alt="">
                             </div>
                             <div class="img-2">
                                 <img src="img/d.jpg" class="img-fluid rounded w-100" alt="">
@@ -436,7 +466,6 @@
             </div>
         </div>
         <!-- About End -->
-
 
         <!-- Fact Counter -->
         <div class="container-fluid counter bg-secondary py-5">
@@ -569,19 +598,20 @@ Kami menyediakan layanan City to City yang fleksibel, cepat, dan efisien untuk m
             <div class="container pb-5">
                 <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 800px;">
                     <h1 class="display-5 text-capitalize mb-3">Vehicle <span class="text-primary">Categories</span></h1>
-                    <p class="mb-0">Awo Trans memiliki berbagai macam armada yg terawat dan bersih, berbagai macam merek mulai dari Toyota, Honda, bahkan hingga Mercy juga tersedia di Awo Trans
-                    </p>
+                    <p class="mb-2">Awo Trans memiliki berbagai macam armada yang terawat dan bersih untuk memenuhi kebutuhan transportasi Anda di Surabaya dan sekitarnya.</p>
+                    <p class="text-primary fw-bold mb-0">* Harga sewa dalam kota include: Driver, Mobil, BBM, Air Mineral, Tisu Kering, Tisu Basah (Exclude: Tol & Parkir)</p>
                 </div>
                 <div class="categories-carousel owl-carousel wow fadeInUp" data-wow-delay="0.1s">
+                    <!-- Alphard All New HEV -->
                     <div class="categories-item p-4">
                         <div class="categories-item-inner">
                             <div class="categories-img rounded-top">
-                                <img src="img/Reborn.png" class="img-fluid w-100 rounded-top" alt="">
+                                <img src="img/alphard.png" class="img-fluid w-100 rounded-top" alt="Alphard All New HEV">
                             </div>
                             <div class="categories-content rounded-bottom p-4">
-                                <h4>Innova Reborn 2.4 G A/T</h4>
+                                <h4>Alphard All New HEV</h4>
                                 <div class="categories-review mb-4">
-                                    <div class="me-3">5 Review</div>
+                                    <div class="me-3">5.0 Review</div>
                                     <div class="d-flex justify-content-center text-secondary">
                                         <i class="fas fa-star"></i>
                                         <i class="fas fa-star"></i>
@@ -591,39 +621,145 @@ Kami menyediakan layanan City to City yang fleksibel, cepat, dan efisien untuk m
                                     </div>
                                 </div>
                                 <div class="mb-4">
-                                    <h4 class="bg-white text-primary rounded-pill py-2 px-4 mb-0">Rp. 550.000/Day</h4>
+                                    <h4 class="bg-white text-primary rounded-pill py-2 px-4 mb-0">Rp 2.700.000 / day</h4>
                                 </div>
-                                <div class="row gy-2 gx-0 text-center mb-4">
-                                    <div class="col-4 border-end border-white">
-                                        <i class="fa fa-users text-dark"></i> <span class="text-body ms-1">7 Seat</span>
-                                    </div>
-                                    <div class="col-4 border-end border-white">
-                                        <i class="fa fa-car text-dark"></i> <span class="text-body ms-1">AT/MT</span>
-                                    </div>
-                                    <div class="col-4">
-                                        <i class="fa fa-gas-pump text-dark"></i> <span class="text-body ms-1">Diesel</span>
-                                    </div>
-                                    <div class="col-4 border-end border-white">
-                                        <i class="fa fa-car text-dark"></i> <span class="text-body ms-1">2024</span>
-                                    </div>
-                                    <div class="col-4 border-end border-white">
-                                        <i class="fa fa-cogs text-dark"></i> <span class="text-body ms-1">AUTO</span>
-                                    </div>
-                                    <div class="col-4">
-                                        <i class="fa fa-road text-dark"></i> <span class="text-body ms-1">24K</span>
-                                    </div>
-                                </div>
-                                <a href="#" class="btn btn-primary rounded-pill d-flex justify-content-center py-3">Book Now</a>
+                                <a href="https://wa.me/62821420224277" target="_blank" class="btn btn-primary rounded-pill d-flex justify-content-center py-3">Book Now</a>
                             </div>
                         </div>
                     </div>
+                    <!-- Alphard FC -->
                     <div class="categories-item p-4">
                         <div class="categories-item-inner">
                             <div class="categories-img rounded-top">
-                                <img src="img/avanza.png" class="img-fluid w-100 rounded-top" alt="">
+                                <img src="img/alphardfc.jfif" class="img-fluid w-100 rounded-top" alt="Alphard FC">
                             </div>
                             <div class="categories-content rounded-bottom p-4">
-                                <h4>All New Avanza G CVT</h4>
+                                <h4>Alphard FC</h4>
+                                <div class="categories-review mb-4">
+                                    <div class="me-3">5.0 Review</div>
+                                    <div class="d-flex justify-content-center text-secondary">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                                <div class="mb-4">
+                                    <h4 class="bg-white text-primary rounded-pill py-2 px-4 mb-0">Rp 2.400.000 / day</h4>
+                                </div>
+                                <a href="https://wa.me/62821420224277" target="_blank" class="btn btn-primary rounded-pill d-flex justify-content-center py-3">Book Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Zenix Q -->
+                    <div class="categories-item p-4">
+                        <div class="categories-item-inner">
+                            <div class="categories-img rounded-top">
+                                <img src="img/zenixq.png" class="img-fluid w-100 rounded-top" alt="Zenix Q">
+                            </div>
+                            <div class="categories-content rounded-bottom p-4">
+                                <h4>Zenix Q</h4>
+                                <div class="categories-review mb-4">
+                                    <div class="me-3">5.0 Review</div>
+                                    <div class="d-flex justify-content-center text-secondary">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                                <div class="mb-4">
+                                    <h4 class="bg-white text-primary rounded-pill py-2 px-4 mb-0">Rp 1.300.000 / day</h4>
+                                </div>
+                                <a href="https://wa.me/62821420224277" target="_blank" class="btn btn-primary rounded-pill d-flex justify-content-center py-3">Book Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Zenix V -->
+                    <div class="categories-item p-4">
+                        <div class="categories-item-inner">
+                            <div class="categories-img rounded-top">
+                                <img src="img/zenixv.png" class="img-fluid w-100 rounded-top" alt="Zenix V">
+                            </div>
+                            <div class="categories-content rounded-bottom p-4">
+                                <h4>Zenix V</h4>
+                                <div class="categories-review mb-4">
+                                    <div class="me-3">5.0 Review</div>
+                                    <div class="d-flex justify-content-center text-secondary">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                                <div class="mb-4">
+                                    <h4 class="bg-white text-primary rounded-pill py-2 px-4 mb-0">Rp 1.225.000 / day</h4>
+                                </div>
+                                <a href="https://wa.me/62821420224277" target="_blank" class="btn btn-primary rounded-pill d-flex justify-content-center py-3">Book Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Zenix G -->
+                    <div class="categories-item p-4">
+                        <div class="categories-item-inner">
+                            <div class="categories-img rounded-top">
+                                <img src="img/zenixg.png" class="img-fluid w-100 rounded-top" alt="Zenix G">
+                            </div>
+                            <div class="categories-content rounded-bottom p-4">
+                                <h4>Zenix G</h4>
+                                <div class="categories-review mb-4">
+                                    <div class="me-3">5.0 Review</div>
+                                    <div class="d-flex justify-content-center text-secondary">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                                <div class="mb-4">
+                                    <h4 class="bg-white text-primary rounded-pill py-2 px-4 mb-0">Rp 1.175.000 / day</h4>
+                                </div>
+                                <a href="https://wa.me/62821420224277" target="_blank" class="btn btn-primary rounded-pill d-flex justify-content-center py-3">Book Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Innova Reborn -->
+                    <div class="categories-item p-4">
+                        <div class="categories-item-inner">
+                            <div class="categories-img rounded-top">
+                                <img src="img/Reborn.png" class="img-fluid w-100 rounded-top" alt="Innova Reborn">
+                            </div>
+                            <div class="categories-content rounded-bottom p-4">
+                                <h4>Innova Reborn</h4>
+                                <div class="categories-review mb-4">
+                                    <div class="me-3">5.0 Review</div>
+                                    <div class="d-flex justify-content-center text-secondary">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                                <div class="mb-4">
+                                    <h4 class="bg-white text-primary rounded-pill py-2 px-4 mb-0">Rp 900.000 / day</h4>
+                                </div>
+                                <a href="https://wa.me/62821420224277" target="_blank" class="btn btn-primary rounded-pill d-flex justify-content-center py-3">Book Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Avanza -->
+                    <div class="categories-item p-4">
+                        <div class="categories-item-inner">
+                            <div class="categories-img rounded-top">
+                                <img src="img/avanza.png" class="img-fluid w-100 rounded-top" alt="Avanza">
+                            </div>
+                            <div class="categories-content rounded-bottom p-4">
+                                <h4>Avanza</h4>
                                 <div class="categories-review mb-4">
                                     <div class="me-3">4.5 Review</div>
                                     <div class="d-flex justify-content-center text-secondary">
@@ -635,80 +771,42 @@ Kami menyediakan layanan City to City yang fleksibel, cepat, dan efisien untuk m
                                     </div>
                                 </div>
                                 <div class="mb-4">
-                                    <h4 class="bg-white text-primary rounded-pill py-2 px-4 mb-0">Rp. 400.000/Day</h4>
+                                    <h4 class="bg-white text-primary rounded-pill py-2 px-4 mb-0">Rp 750.000 / day</h4>
                                 </div>
-                                <div class="row gy-2 gx-0 text-center mb-4">
-                                    <div class="col-4 border-end border-white">
-                                        <i class="fa fa-users text-dark"></i> <span class="text-body ms-1">7 Seat</span>
-                                    </div>
-                                    <div class="col-4 border-end border-white">
-                                        <i class="fa fa-car text-dark"></i> <span class="text-body ms-1">AT/MT</span>
-                                    </div>
-                                    <div class="col-4">
-                                        <i class="fa fa-gas-pump text-dark"></i> <span class="text-body ms-1">Bensin</span>
-                                    </div>
-                                    <div class="col-4 border-end border-white">
-                                        <i class="fa fa-car text-dark"></i> <span class="text-body ms-1">2024</span>
-                                    </div>
-                                    <div class="col-4 border-end border-white">
-                                        <i class="fa fa-cogs text-dark"></i> <span class="text-body ms-1">AUTO</span>
-                                    </div>
-                                    <div class="col-4">
-                                        <i class="fa fa-road text-dark"></i> <span class="text-body ms-1">15K</span>
-                                    </div>
-                                </div>
-                                <a href="#" class="btn btn-primary rounded-pill d-flex justify-content-center py-3">Book Now</a>
+                                <a href="https://wa.me/62821420224277" target="_blank" class="btn btn-primary rounded-pill d-flex justify-content-center py-3">Book Now</a>
                             </div>
                         </div>
                     </div>
+                    <!-- Hiace Commuter -->
                     <div class="categories-item p-4">
                         <div class="categories-item-inner">
                             <div class="categories-img rounded-top">
-                                <img src="img/alphard.png" class="img-fluid w-100 rounded-top" alt="">
+                                <img src="img/comuter.png" class="img-fluid w-100 rounded-top" alt="Hiace Commuter">
                             </div>
                             <div class="categories-content rounded-bottom p-4">
-                                <h4>New Alphard HEV</h4>
+                                <h4>Hiace Commuter</h4>
                                 <div class="categories-review mb-4">
-                                    <div class="me-3">4.5 Review</div>
+                                    <div class="me-3">4.8 Review</div>
                                     <div class="d-flex justify-content-center text-secondary">
                                         <i class="fas fa-star"></i>
                                         <i class="fas fa-star"></i>
                                         <i class="fas fa-star"></i>
                                         <i class="fas fa-star"></i>
-                                        <i class="fas fa-star text-body"></i>
+                                        <i class="fas fa-star"></i>
                                     </div>
                                 </div>
                                 <div class="mb-4">
-                                    <h4 class="bg-white text-primary rounded-pill py-2 px-4 mb-0">Rp. 2.700.000/Day</h4>
+                                    <h4 class="bg-white text-primary rounded-pill py-2 px-4 mb-0">Rp 1.150.000 / day</h4>
                                 </div>
-                                <div class="row gy-2 gx-0 text-center mb-4">
-                                    <div class="col-4 border-end border-white">
-                                        <i class="fa fa-users text-dark"></i> <span class="text-body ms-1">5 Seat</span>
-                                    </div>
-                                    <div class="col-4 border-end border-white">
-                                        <i class="fa fa-car text-dark"></i> <span class="text-body ms-1">AT/MT</span>
-                                    </div>
-                                    <div class="col-4">
-                                        <i class="fa fa-gas-pump text-dark"></i> <span class="text-body ms-1">Bensin</span>
-                                    </div>
-                                    <div class="col-4 border-end border-white">
-                                        <i class="fa fa-car text-dark"></i> <span class="text-body ms-1">2025</span>
-                                    </div>
-                                    <div class="col-4 border-end border-white">
-                                        <i class="fa fa-cogs text-dark"></i> <span class="text-body ms-1">AUTO</span>
-                                    </div>
-                                    <div class="col-4">
-                                        <i class="fa fa-road text-dark"></i> <span class="text-body ms-1">10K</span>
-                                    </div>
-                                </div>
-                                <a href="#" class="btn btn-primary rounded-pill d-flex justify-content-center py-3">Book Now</a>
+                                <a href="https://wa.me/62821420224277" target="_blank" class="btn btn-primary rounded-pill d-flex justify-content-center py-3">Book Now</a>
                             </div>
                         </div>
                     </div>
+                    <!-- Hiace Premio -->
                     <div class="categories-item p-4">
                         <div class="categories-item-inner">
                             <div class="categories-img rounded-top">
-                                <img src="img/premio.png" class="img-fluid w-100 rounded-top" alt="">
+                                <img src="img/premio.png" class="img-fluid w-100 rounded-top" alt="Hiace Premio">
                             </div>
                             <div class="categories-content rounded-bottom p-4">
                                 <h4>Hiace Premio</h4>
@@ -723,29 +821,9 @@ Kami menyediakan layanan City to City yang fleksibel, cepat, dan efisien untuk m
                                     </div>
                                 </div>
                                 <div class="mb-4">
-                                    <h4 class="bg-white text-primary rounded-pill py-2 px-4 mb-0">Rp. 1.000.000/Day</h4>
+                                    <h4 class="bg-white text-primary rounded-pill py-2 px-4 mb-0">Rp 1.300.000 / day</h4>
                                 </div>
-                                <div class="row gy-2 gx-0 text-center mb-4">
-                                    <div class="col-4 border-end border-white">
-                                        <i class="fa fa-users text-dark"></i> <span class="text-body ms-1">14 Seat</span>
-                                    </div>
-                                    <div class="col-4 border-end border-white">
-                                        <i class="fa fa-car text-dark"></i> <span class="text-body ms-1">AT/MT</span>
-                                    </div>
-                                    <div class="col-4">
-                                        <i class="fa fa-gas-pump text-dark"></i> <span class="text-body ms-1">Diesel</span>
-                                    </div>
-                                    <div class="col-4 border-end border-white">
-                                        <i class="fa fa-car text-dark"></i> <span class="text-body ms-1">2024</span>
-                                    </div>
-                                    <div class="col-4 border-end border-white">
-                                        <i class="fa fa-cogs text-dark"></i> <span class="text-body ms-1">AUTO</span>
-                                    </div>
-                                    <div class="col-4">
-                                        <i class="fa fa-road text-dark"></i> <span class="text-body ms-1">24k</span>
-                                    </div>
-                                </div>
-                                <a href="#" class="btn btn-primary rounded-pill d-flex justify-content-center py-3">Book Now</a>
+                                <a href="https://wa.me/62821420224277" target="_blank" class="btn btn-primary rounded-pill d-flex justify-content-center py-3">Book Now</a>
                             </div>
                         </div>
                     </div>
@@ -810,9 +888,9 @@ Rasakan kenyamanan dan pelayanan terbaik dari Awo Trans!</p>
                                     <div class="small"><span class="fa fa-user text-primary"></span><span class="ms-2">Dimas Sudrajat</span></div>
                                     <div class="small"><span class="fa fa-comment-alt text-primary"></span><span class="ms-2">6 Comments</span></div>
                                 </div>
-                                <a href="#" class="h4 d-block mb-3">Mau rasain badaknya mesin diesel? sewa Innova Reborn aja</a>
+                                <a href="blog1.html" class="h4 d-block mb-3">Mau rasain badaknya mesin diesel? sewa Innova Reborn aja</a>
                                 <p class="mb-3">Mau Mobil MPV dengan banyak penumpang dan tetap luas? Innova Reborn jawabannya</p>
-                                <a href="#" class="">Read More  <i class="fa fa-arrow-right"></i></a>
+                                <a href="blog1.html" class="">Read More <i class="fa fa-arrow-right"></i></a>
                             </div>
                         </div>
                     </div>
@@ -827,9 +905,9 @@ Rasakan kenyamanan dan pelayanan terbaik dari Awo Trans!</p>
                                     <div class="small"><span class="fa fa-user text-primary"></span><span class="ms-2">Dito</span></div>
                                     <div class="small"><span class="fa fa-comment-alt text-primary"></span><span class="ms-2">2 Comments</span></div>
                                 </div>
-                                <a href="#" class="h4 d-block mb-3">Rumah berjalan?</a>
+                                <a href="blog2.html" class="h4 d-block mb-3">Rumah berjalan?</a>
                                 <p class="mb-3">Mau ngerasain mobil seharga rumah, tapi bingung gaada duit buat beli nya? rental mobil jawabannya, rasakan sensasi rumah berjalan di all new alphard hybrid</p>
-                                <a href="#" class="">Read More  <i class="fa fa-arrow-right"></i></a>
+                                <a href="blog2.html" class="">Read More <i class="fa fa-arrow-right"></i></a>
                             </div>
                         </div>
                     </div>
@@ -846,7 +924,7 @@ Rasakan kenyamanan dan pelayanan terbaik dari Awo Trans!</p>
                                 </div>
                                 <a href="#" class="h4 d-block mb-3">Mau rekreasi bareng keluarga? sewa hiace solusinya</a>
                                 <p class="mb-3">Sewa hiace di awo trans selain murah juga dapat kualitas terbaik, dengan full entertaint + karaoke di dalamnya</p>
-                                <a href="#" class="">Read More  <i class="fa fa-arrow-right"></i></a>
+                                <a href="#" class="">Read More <i class="fa fa-arrow-right"></i></a>
                             </div>
                         </div>
                     </div>
@@ -864,97 +942,17 @@ Rasakan kenyamanan dan pelayanan terbaik dari Awo Trans!</p>
                         <h2 class="text-primary">Rent Your Car</h2>
                         <h1 class="text-white">Tertarik untuk sewa?</h1>
                         <p class="text-white">jangan Ragu Hubungi kami</p>
-                        <div class="banner-btn">
-                            <a href="#" class="btn btn-secondary rounded-pill py-3 px-4 px-md-5 me-2">WhatsApp Admin 1</a>
-                            <a href="#" class="btn btn-primary rounded-pill py-3 px-4 px-md-5 ms-2">Whats App Admin 2</a>
+                        <div class="banner-btn d-flex flex-wrap justify-content-center gap-2">
+                            <a href="https://wa.me/6281231778551" target="_blank" class="btn btn-secondary rounded-pill py-3 px-4">WhatsApp Admin 1</a>
+                            <a href="https://wa.me/628980839962" target="_blank" class="btn btn-primary rounded-pill py-3 px-4">WhatsApp Admin 2</a>
+                            <a href="https://wa.me/62821420224277" target="_blank" class="btn btn-secondary rounded-pill py-3 px-4">WhatsApp Admin 3</a>
+                            <a href="https://wa.me/6282113965757" target="_blank" class="btn btn-primary rounded-pill py-3 px-4">WhatsApp Admin 4</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <!-- Banner End -->
-
-        <!-- Team Start -->
-        <div class="container-fluid team pb-5">
-            <div class="container pb-5">
-                <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 800px;">
-                    <h1 class="display-5 text-capitalize mb-3">Team<span class="text-primary"> Awo Trans</span></h1>
-                    <p class="mb-0">Awo Trans tidak akan berkembang jika tidak mempunyai team yg luar biasa, tak kenal maka tak sayang, berikut merupakan beberapa team Awo Trans
-                    </p>
-                </div>
-                <div class="row g-4">
-                    <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.1s">
-                        <div class="team-item p-4 pt-0">
-                            <div class="team-img">
-                                <img src="img/team-1.jpg" class="img-fluid rounded w-100" alt="Image">
-                            </div>
-                            <div class="team-content pt-4">
-                                <h4>MARTIN DOE</h4>
-                                <p>Profession</p>
-                                <div class="team-icon d-flex justify-content-center">
-                                    <a class="btn btn-square btn-light rounded-circle mx-1" href=""><i class="fab fa-facebook-f"></i></a>
-                                    <a class="btn btn-square btn-light rounded-circle mx-1" href=""><i class="fab fa-twitter"></i></a>
-                                    <a class="btn btn-square btn-light rounded-circle mx-1" href=""><i class="fab fa-instagram"></i></a>
-                                    <a class="btn btn-square btn-light rounded-circle mx-1" href=""><i class="fab fa-linkedin-in"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.3s">
-                        <div class="team-item p-4 pt-0">
-                            <div class="team-img">
-                                <img src="img/team-2.jpg" class="img-fluid rounded w-100" alt="Image">
-                            </div>
-                            <div class="team-content pt-4">
-                                <h4>MARTIN DOE</h4>
-                                <p>Profession</p>
-                                <div class="team-icon d-flex justify-content-center">
-                                    <a class="btn btn-square btn-light rounded-circle mx-1" href=""><i class="fab fa-facebook-f"></i></a>
-                                    <a class="btn btn-square btn-light rounded-circle mx-1" href=""><i class="fab fa-twitter"></i></a>
-                                    <a class="btn btn-square btn-light rounded-circle mx-1" href=""><i class="fab fa-instagram"></i></a>
-                                    <a class="btn btn-square btn-light rounded-circle mx-1" href=""><i class="fab fa-linkedin-in"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.5s">
-                        <div class="team-item p-4 pt-0">
-                            <div class="team-img">
-                                <img src="img/team-3.jpg" class="img-fluid rounded w-100" alt="Image">
-                            </div>
-                            <div class="team-content pt-4">
-                                <h4>MARTIN DOE</h4>
-                                <p>Profession</p>
-                                <div class="team-icon d-flex justify-content-center">
-                                    <a class="btn btn-square btn-light rounded-circle mx-1" href=""><i class="fab fa-facebook-f"></i></a>
-                                    <a class="btn btn-square btn-light rounded-circle mx-1" href=""><i class="fab fa-twitter"></i></a>
-                                    <a class="btn btn-square btn-light rounded-circle mx-1" href=""><i class="fab fa-instagram"></i></a>
-                                    <a class="btn btn-square btn-light rounded-circle mx-1" href=""><i class="fab fa-linkedin-in"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.7s">
-                        <div class="team-item p-4 pt-0">
-                            <div class="team-img">
-                                <img src="img/team-4.jpg" class="img-fluid rounded w-100" alt="Image">
-                            </div>
-                            <div class="team-content pt-4">
-                                <h4>MARTIN DOE</h4>
-                                <p>Profession</p>
-                                <div class="team-icon d-flex justify-content-center">
-                                    <a class="btn btn-square btn-light rounded-circle mx-1" href=""><i class="fab fa-facebook-f"></i></a>
-                                    <a class="btn btn-square btn-light rounded-circle mx-1" href=""><i class="fab fa-twitter"></i></a>
-                                    <a class="btn btn-square btn-light rounded-circle mx-1" href=""><i class="fab fa-instagram"></i></a>
-                                    <a class="btn btn-square btn-light rounded-circle mx-1" href=""><i class="fab fa-linkedin-in"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Team End -->
 
         <!-- Testimonial Start -->
         <div class="container-fluid testimonial pb-5">
@@ -969,16 +967,16 @@ Rasakan kenyamanan dan pelayanan terbaik dari Awo Trans!</p>
                         <div class="testimonial-quote"><i class="fa fa-quote-right fa-2x"></i>
                         </div>
                         <div class="testimonial-inner p-4">
-                            <img src="img/testimonial-1.jpg" class="img-fluid" alt="">
+                            <img src="img/images (1).jfif" class="img-fluid" alt="">
                             <div class="ms-4">
-                                <h4>Feby</h4>
+                                <h4>PT. Perkebunan Nusantara</h4>
                                 <p>Sewa Bulanan</p>
                                 <div class="d-flex text-primary">
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
-                                    <i class="fas fa-star text-body"></i>
+                                    <i class="fas fa-star"></i>
                                 </div>
                             </div>
                         </div>
@@ -990,9 +988,9 @@ Rasakan kenyamanan dan pelayanan terbaik dari Awo Trans!</p>
                         <div class="testimonial-quote"><i class="fa fa-quote-right fa-2x"></i>
                         </div>
                         <div class="testimonial-inner p-4">
-                            <img src="img/testimonial-2.jpg" class="img-fluid" alt="">
+                            <img src="img/images (2).png" class="img-fluid" alt="">
                             <div class="ms-4">
-                                <h4>Dian</h4>
+                                <h4>Bank Indonesia</h4>
                                 <p>Sewa Harian</p>
                                 <div class="d-flex text-primary">
                                     <i class="fas fa-star"></i>
@@ -1011,21 +1009,21 @@ Rasakan kenyamanan dan pelayanan terbaik dari Awo Trans!</p>
                         <div class="testimonial-quote"><i class="fa fa-quote-right fa-2x"></i>
                         </div>
                         <div class="testimonial-inner p-4">
-                            <img src="img/testimonial-3.jpg" class="img-fluid" alt="">
+                            <img src="img/images.png" class="img-fluid" alt="">
                             <div class="ms-4">
-                                <h4>Person Name</h4>
-                                <p>Profession</p>
+                                <h4>Perusahaan Gas Nasional</h4>
+                                <p>Sewa Bulanan</p>
                                 <div class="d-flex text-primary">
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
-                                    <i class="fas fa-star text-body"></i>
-                                    <i class="fas fa-star text-body"></i>
-                                    <i class="fas fa-star text-body"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
                                 </div>
                             </div>
                         </div>
                         <div class="border-top rounded-bottom p-4">
-                            <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam soluta neque ab repudiandae reprehenderit ipsum eos cumque esse repellendus impedit.</p>
+                            <p class="mb-0">Selalu cepat tanggap setiap kali ada kendala di jalan</p>
                         </div>
                     </div>
                 </div>
@@ -1062,28 +1060,30 @@ Rasakan kenyamanan dan pelayanan terbaik dari Awo Trans!</p>
                     </div>
                     <div class="col-md-6 col-lg-6 col-xl-3">
                         <div class="footer-item d-flex flex-column">
-                            <h4 class="text-white mb-4">Business Hours</h4>
+                            <h4 class="text-white mb-4">Jam Kerja</h4>
                             <div class="mb-3">
-                                <h6 class="text-muted mb-0">Mon - Friday:</h6>
-                                <p class="text-white mb-0">09.00 am to 07.00 pm</p>
+                                <h6 class="text-muted mb-0">Senin - Minggu:</h6>
+                                <p class="text-white mb-0">07.00 am to 20.00 pm</p>
                             </div>
                             <div class="mb-3">
-                                <h6 class="text-muted mb-0">Saturday:</h6>
-                                <p class="text-white mb-0">10.00 am to 05.00 pm</p>
+                                <h6 class="text-muted mb-0">Minggu</h6>
+                                <p class="text-white mb-0">09.00 am to 20.00 pm</p>
                             </div>
                             <div class="mb-3">
                                 <h6 class="text-muted mb-0">Vacation:</h6>
-                                <p class="text-white mb-0">All Sunday is our vacation</p>
+                                <p class="text-white mb-0">None</p>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-6 col-xl-3">
                         <div class="footer-item d-flex flex-column">
                             <h4 class="text-white mb-4">Contact Info</h4>
-                            <a href="#"><i class="fa fa-map-marker-alt me-2"></i> Jl. Rungkut Mapan Selatan Rungkut Mapan Tengah No.1 Blok FD, Rungkut Tengah, Kec. Gn. Anyar, Surabaya, Jawa Timur 60293</a>
-                            <a href="mailto:info@example.com"><i class="fas fa-envelope me-2"></i> awolahanjayatrans@gmail.com</a>
-                            <a href="tel:+012 345 67890"><i class="fas fa-phone me-2"></i> 0812 3177 8551</a>
-                            <a href="tel:+012 345 67890" class="mb-3"><i class="fas fa-print me-2"></i> +012 345 67890</a>
+                            <a href="https://share.google/tRW3UdEjcTKKyK4zT" target="_blank" class="mb-2"><i class="fa fa-map-marker-alt me-2"></i> Jl. Rungkut Mapan Selatan Rungkut Mapan Tengah No.1 Blok FD, Rungkut Tengah, Kec. Gn. Anyar, Surabaya, Jawa Timur 60293</a>
+                            <a href="mailto:awolahanjayatrans@gmail.com" class="mb-2"><i class="fas fa-envelope me-2"></i> awolahanjayatrans@gmail.com</a>
+                            <a href="https://wa.me/6281231778551" target="_blank" class="mb-1"><i class="fab fa-whatsapp me-2"></i> 0812 3177 8551</a>
+                            <a href="https://wa.me/628980839962" target="_blank" class="mb-1"><i class="fab fa-whatsapp me-2"></i> 0898 0839 962</a>
+                            <a href="https://wa.me/62821420224277" target="_blank" class="mb-1"><i class="fab fa-whatsapp me-2"></i> 0821 4202 24277</a>
+                            <a href="https://wa.me/6282113965757" target="_blank" class="mb-3"><i class="fab fa-whatsapp me-2"></i> 0821 1396 5757</a>
                             <div class="d-flex">
                                 <a class="btn btn-secondary btn-md-square rounded-circle me-3" href=""><i class="fab fa-facebook-f text-white"></i></a>
                                 <a class="btn btn-secondary btn-md-square rounded-circle me-3" href=""><i class="fab fa-twitter text-white"></i></a>
@@ -1105,9 +1105,6 @@ Rasakan kenyamanan dan pelayanan terbaik dari Awo Trans!</p>
                         <span class="text-body"><a href="#" class="border-bottom text-white"><i class="fas fa-copyright text-light me-2"></i>Awo Trans</a>, All right reserved.</span>
                     </div>
                     <div class="col-md-6 text-center text-md-end text-body">
-                        <!--/*** This template is free as long as you keep the below author’s credit link/attribution link/backlink. ***/-->
-                        <!--/*** If you'd like to use the template without the below author’s credit link/attribution link/backlink, ***/-->
-                        <!--/*** you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". ***/-->
                         Designed By <a class="border-bottom text-white" href="">Awo Trans</a>
                     </div>
                 </div>
@@ -1115,11 +1112,9 @@ Rasakan kenyamanan dan pelayanan terbaik dari Awo Trans!</p>
         </div>
         <!-- Copyright End -->
 
-
         <!-- Back to Top -->
         <a href="#" class="btn btn-secondary btn-lg-square rounded-circle back-to-top"><i class="fa fa-arrow-up"></i></a>   
 
-        
     <!-- JavaScript Libraries -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -1128,7 +1123,6 @@ Rasakan kenyamanan dan pelayanan terbaik dari Awo Trans!</p>
     <script src="lib/waypoints/waypoints.min.js"></script>
     <script src="lib/counterup/counterup.min.js"></script>
     <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-    
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
